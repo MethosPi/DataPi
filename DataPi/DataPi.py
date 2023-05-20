@@ -52,21 +52,17 @@ if uploaded_files:  # Controlla se ci sono file caricati
                             return dialect.delimiter
 
                     delimiter = detect_delimiter(uploaded_file)
-                    df = pd.read_csv(uploaded_file, delimiter=delimiter)
+                    df = pd.read_csv(uploaded_file, delimiter=delimiter)                   
 
-                    if df.shape[1] == 1:
-                        st.write('Wrong delimiter, please insert it manually')                          
-
-
-                for i, df in enumerate(dataframes):
-                    st.write(f'File {i+1}:')
-                    response = pandas_ai.run(df, prompt=prompt)
-                    if 'Plot' in prompt or 'chart' in prompt:
-                        plt.title('Plot')
-                        st.pyplot(plt)
-                    else:
-                        st.write(response)
-                        st.write('---')  # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
+                    for i, df in enumerate(dataframes):
+                        st.write(f'File {i+1}:')
+                        response = pandas_ai.run(df, prompt=prompt)
+                        if 'Plot' in prompt or 'chart' in prompt:
+                            plt.title('Plot')
+                            st.pyplot(plt)
+                        else:
+                            st.write(response)
+                            st.write('---')  # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
     for i, uploaded_file in enumerate(uploaded_files):       
         with columns[i]:
             if uploaded_file.name.endswith('.csv'):
