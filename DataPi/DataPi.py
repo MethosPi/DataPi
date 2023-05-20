@@ -6,11 +6,10 @@ from pandasai.llm.openai import OpenAI
 import openai
 import csv
 import io
-
+import apikey from apikey
 
 delta = '\u0394'
 pi = '\u03C0'
-
 
 st.header(f'Δata{pi}')
 st.subheader('Prompt your data')
