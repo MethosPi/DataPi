@@ -90,7 +90,7 @@ if uploaded_files:  # Controlla se ci sono file caricati
                     st.write(f'File {i+1} ({uploaded_file.name}) is empty.')
                 else:
                     dataframes.append(df)
-                    if st.button(f'Prompt CSV {i+1}', key=f'promptcsv_button_{i}'):
+                    if st.button(f'Prompt {uploaded_file.name}', key=f'promptcsv_button_{i}'):
                         response = pandas_ai.run(dataframes[-1], prompt=prompt)
                         if 'Plot' in prompt:
                             # Plot the data
@@ -132,7 +132,7 @@ if uploaded_files:  # Controlla se ci sono file caricati
             elif uploaded_file.name.endswith('.xlsx'):
                 df = pd.read_excel(uploaded_file)
                 dataframes.append(df)
-                if st.button(f'Prompt EXCEL {i+1}', key='promptxlsx_button_(2)'):
+                if st.button(f'Prompt {uploaded_file.name}', key='promptxlsx_button_(2)'):
                     response = pandas_ai.run(dataframes[-1], prompt=prompt)
                     if 'Plot' in prompt:
                         # Plot the data
