@@ -40,21 +40,22 @@ pandas_ai = PandasAI(llm)
 
 if uploaded_files:  # Controlla se ci sono file caricati
     columns = st.columns(len(uploaded_files))
-    if len(uploaded_files) > 1:  # Controlla se ci sono più di un file caricato
-                if st.button('PROMPT ALL', key='promptall_button'):
-                    for uploaded_file in uploaded_files:                        
-                        if uploaded_file.name.endswith('.csv'):
-                            def detect_delimiter(uploaded_file):
-                                with io.StringIO(uploaded_file.getvalue().decode('utf-8')) as file:
-                                    content = '\n'.join(file.readlines()[:5])  # Ottieni solo le prime 5 righe del contenuto
-                                    dialect = csv.Sniffer().sniff(content)
-                                    return dialect.delimiter
+    if len(uploaded_files) > 1:
+        # Controlla se ci sono più di un file caricato
+        if st.button('PROMPT ALL', key='promptall_button'):
+            for uploaded_file in uploaded_files:                        
+                if uploaded_file.name.endswith('.csv'):
+                    def detect_delimiter(uploaded_file):
+                        with io.StringIO(uploaded_file.getvalue().decode('utf-8')) as file:
+                            content = '\n'.join(file.readlines()[:5])  # Ottieni solo le prime 5 righe del contenuto
+                            dialect = csv.Sniffer().sniff(content)
+                            return dialect.delimiter
 
-                            delimiter = detect_delimiter(uploaded_file)
-                            df = pd.read_csv(uploaded_file, delimiter=delimiter)
+                    delimiter = detect_delimiter(uploaded_file)
+                    df = pd.read_csv(uploaded_file, delimiter=delimiter)
 
-                            if df.shape[1] == 1:
-                                st.write('Wrong delimiter, please insert it manually')                          
+                    if df.shape[1] == 1:
+                        st.write('Wrong delimiter, please insert it manually')                          
 
 
                 for i, df in enumerate(dataframes):
