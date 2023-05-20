@@ -17,7 +17,7 @@ prompt = st.text_input('Type "Plot" to plot')
 
 # Create a sidebar menu
 sidebar = st.sidebar
-sidebar.image('deltapilogo.png', width=150)
+sidebar.header('ΔΠ')
 sidebar.header('Menu')
 sidebar.text(' ')
 sidebar.text('Supported file types:')
