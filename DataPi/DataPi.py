@@ -109,10 +109,6 @@ if uploaded_files:  # Controlla se ci sono file caricati
                         st.write('First 10 rows:')
                         st.write(df.head(10))
 
-                    if st.button('Show column data types', key=f'columncsv_button_{i}'):
-                        st.write('Column data types:')
-                        st.write(df.dtypes)
-
                     if st.button('Describe', key=f'describecsv_button_{i}'):
                         st.write('Description:')
                         st.write(df.describe())
@@ -154,10 +150,6 @@ if uploaded_files:  # Controlla se ci sono file caricati
                     st.write('First 10 rows:')
                     st.write(df.head(10))
                 
-                if st.button('Show column data types', key='columnxlsx_button'):
-                    st.write('Column data types:')
-                    st.write(df.dtypes)
-
                 if st.button('Describe', key='describexlsx_button'):
                     st.write('Description:')
                     st.write(df.describe())
