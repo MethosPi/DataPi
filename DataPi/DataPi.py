@@ -11,7 +11,7 @@ delta = '\u0394'
 pi = '\u03A0'
 
 
-st.header(f'{delta}ata{pi}')
+st.header('ΔΠ', width=150)
 st.subheader('Prompt your data')
 prompt = st.text_input('Type "Plot" to plot')
 
