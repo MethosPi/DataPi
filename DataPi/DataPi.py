@@ -12,13 +12,13 @@ delta = '\u0394'
 pi = '\u03C0'
 
 
-st.header('ΔataΠ')
+st.header('Δata{pi}')
 st.subheader('Prompt your data')
 prompt = st.text_input('Type "Plot" to plot')
 
 # Create a sidebar menu
 sidebar = st.sidebar
-sidebar.header(f'{delta}ata{pi}')
+sidebar.header(f'{delta}{pi} DataPi')
 sidebar.header('Menu')
 sidebar.text(' ')
 sidebar.text('Supported file types:')
