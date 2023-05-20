@@ -56,8 +56,6 @@ if uploaded_files:  # Controlla se ci sono file caricati
                                 
                                 if df.shape[1] == 1:
                                     st.write('Wrong delimiter, please insert it manually')                          
-                            if not df.empty:  # Verifica se il DataFrame non è vuoto dopo la lettura del file
-                                dataframes.append(df)
                         else:
                             st.write(f'File {uploaded_file.name} is empty.')
 
