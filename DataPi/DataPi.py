@@ -9,7 +9,7 @@ import io
 
 
 delta = '\u0394'
-pi = '\u03A0'
+pi = ‘\u03C0’
 
 
 st.header('ΔΠ')
