@@ -43,26 +43,34 @@ if uploaded_files:  # Controlla se ci sono file caricati
     if len(uploaded_files) > 1:
         # Controlla se ci sono più di un file caricato
         if st.button('PROMPT ALL', key='promptall_button'):
-            for uploaded_file in uploaded_files:                        
-                if uploaded_file.name.endswith('.csv'):
-                    def detect_delimiter(uploaded_file):
-                        with io.StringIO(uploaded_file.getvalue().decode('utf-8')) as file:
-                            content = '\n'.join(file.readlines()[:5])  # Ottieni solo le prime 5 righe del contenuto
-                            dialect = csv.Sniffer().sniff(content)
-                            return dialect.delimiter
-
-                    delimiter = detect_delimiter(uploaded_file)
-                    df = pd.read_csv(uploaded_file, delimiter=delimiter)                   
-
-                    for i, df in enumerate(dataframes):
-                        st.write(f'File {i+1}:')
-                        response = pandas_ai.run(df, prompt=prompt)
-                        if 'Plot' in prompt or 'chart' in prompt:
-                            plt.title('Plot')
-                            st.pyplot(plt)
+                    for uploaded_file in uploaded_files:
+                        if uploaded_file.size > 0:  # Verifica se il file non è vuoto
+                            if uploaded_file.name.endswith('.csv'):
+                                def detect_delimiter(uploaded_file):
+                                    with io.StringIO(uploaded_file.getvalue().decode('utf-8')) as file:
+                                        content = '\n'.join(file.readlines()[:5])  # Ottieni solo le prime 5 righe del contenuto
+                                        dialect = csv.Sniffer().sniff(content)
+                                        return dialect.delimiter
+                                
+                                delimiter = detect_delimiter(uploaded_file)
+                                df = pd.read_csv(uploaded_file, delimiter=delimiter)
+                                
+                                if df.shape[1] == 1:
+                                    st.write('Wrong delimiter, please insert it manually')                          
+                            if not df.empty:  # Verifica se il DataFrame non è vuoto dopo la lettura del file
+                                dataframes.append(df)
                         else:
-                            st.write(response)
-                            st.write('---')  # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
+                            st.write(f'File {uploaded_file.name} is empty.')
+
+                for i, df in enumerate(dataframes):
+                    st.write(f'File {i+1}:')
+                    response = pandas_ai.run(df, prompt=prompt)
+                    if 'Plot' in prompt or 'chart' in prompt:
+                        plt.title('Plot')
+                        st.pyplot(plt)
+                    else:
+                        st.write(response)
+                        st.write('---')   # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
     for i, uploaded_file in enumerate(uploaded_files):       
         with columns[i]:
             if uploaded_file.name.endswith('.csv'):
