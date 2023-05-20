@@ -17,7 +17,7 @@ prompt = st.text_input('Type "Plot" to plot')
 
 # Create a sidebar menu
 sidebar = st.sidebar
-sidebar.header(f'{delta}ata{pi}', width=200)
+sidebar.header(f'{delta}ata{pi}')
 sidebar.header('Menu')
 sidebar.text(' ')
 sidebar.text('Supported file types:')
