@@ -1,2 +1,2 @@
 # DataPi
-AI Data Check, Prompt and Plot
+AI Data check, prompt and plot
