@@ -29,8 +29,8 @@ sidebar.text(' ')
 delimiter_input = sidebar.text_input("CSV delimiter", max_chars=1)
 delimiter = delimiter_input
 dataframes = []
-
-if apikey_input = sidebar.text_input("Insert your OpenAI API key") is not None:
+apikey_input = sidebar.text_input("Insert your OpenAI API key")
+if apikey_input is not None:
     apikey_input = apikey
 
 
