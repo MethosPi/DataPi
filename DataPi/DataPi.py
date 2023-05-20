@@ -62,15 +62,15 @@ if uploaded_files:  # Controlla se ci sono file caricati
                                 else:
                                     st.write(f'File {uploaded_file.name} is empty.')
 
-                        for i, df in enumerate(dataframes):
-                            st.write(f'File {i+1}:')
-                            response = pandas_ai.run(df, prompt=prompt)
-                            if 'Plot' in prompt or 'chart' in prompt:
-                                plt.title('Plot')
-                                st.pyplot(plt)
-                            else:
-                                st.write(response)
-                                st.write('---')   # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
+                            for i, df in enumerate(dataframes):
+                                st.write(f'File {i+1}:')
+                                response = pandas_ai.run(df, prompt=prompt)
+                                if 'Plot' in prompt or 'chart' in prompt:
+                                    plt.title('Plot')
+                                    st.pyplot(plt)
+                                else:
+                                    st.write(response)
+                                    st.write('---')   # Separatore tra i risultati dei prompt  # Separatore tra i risultati dei prompt
     for i, uploaded_file in enumerate(uploaded_files):       
         with columns[i]:
             if uploaded_file.name.endswith('.csv'):
