@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
+import openai
 import csv
 import io
 
