@@ -24,7 +24,6 @@ sidebar.text('Supported file types:')
 sidebar.text('CSV | EXCEL')
 uploaded_files = sidebar.file_uploader("Upload files", accept_multiple_files=True)
 sidebar.text(' ')
-apikey = sidebar.text_input("Insert your OpenAI API key")
 sidebar.text(' ')
 sidebar.text(' ')
 delimiter_input = sidebar.text_input("CSV delimiter", max_chars=1)
@@ -162,4 +161,5 @@ if uploaded_files:  # Controlla se ci sono file caricati
                     duplicates = df.duplicated().sum()
                     st.write(f'Duplicate rows: {duplicates}')
     
-
+    
+apikey = sidebar.text_input("Insert your OpenAI API key")
