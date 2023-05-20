@@ -6,7 +6,7 @@ from pandasai.llm.openai import OpenAI
 import openai
 import csv
 import io
-from apikey import apikey
+
 
 delta = '\u0394'
 pi = '\u03C0'
@@ -29,10 +29,7 @@ sidebar.text(' ')
 delimiter_input = sidebar.text_input("CSV delimiter", max_chars=1)
 delimiter = delimiter_input
 dataframes = []
-apikey_input = sidebar.text_input("Insert your OpenAI API key")
-if apikey_input is not None:
-    apikey_input = apikey
-
+apikey = sidebar.text_input("Insert your OpenAI API key")
 
 OPENAI_API_KEY = apikey
 openai.api_key = apikey
