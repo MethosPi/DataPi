@@ -30,6 +30,10 @@ delimiter_input = sidebar.text_input("CSV delimiter", max_chars=1)
 delimiter = delimiter_input
 dataframes = []
 
+if apikey_input = sidebar.text_input("Insert your OpenAI API key") is not None:
+    apikey_input = apikey
+
+
 OPENAI_API_KEY = apikey
 openai.api_key = apikey
 
@@ -160,6 +164,6 @@ if uploaded_files:  # Controlla se ci sono file caricati
                 if st.button('Duplicates rows', key='duplicatesxlsx_button'):
                     duplicates = df.duplicated().sum()
                     st.write(f'Duplicate rows: {duplicates}')
-    
-    
-apikey = sidebar.text_input("Insert your OpenAI API key")
+
+
+
