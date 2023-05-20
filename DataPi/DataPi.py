@@ -32,7 +32,6 @@ delimiter = delimiter_input
 dataframes = []
 
 OPENAI_API_KEY = apikey
-openai.api_key = apikey
 
 llm = OpenAI(api_token=apikey)
 pandas_ai = PandasAI(llm)
